@@ -8,3 +8,18 @@ node_modules
 output
 .parcel-cache
 dist/
+
+# TODO: remove
+examples/ace/
+examples/components-inputs/
+examples/driver-io/
+examples/components-multitype/
+examples/driver-routing/
+examples/driver-websockets/
+examples/effects-aff-ajax/
+examples/effects-effect-random/
+examples/higher-order-components/
+examples/interpret/
+examples/keyboard-input/
+examples/lifecycle/
+examples/memoized-lazy/

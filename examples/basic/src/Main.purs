@@ -13,6 +13,7 @@ import Web.HTML (window)
 import Web.HTML.HTMLDocument (toNonElementParentNode)
 import Web.HTML.Window (document)
 
+-- TODO: add Halo equivalent of module Halogen.Aff.Util
 
 main :: Effect Unit
 main = do

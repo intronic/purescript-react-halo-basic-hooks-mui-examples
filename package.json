@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "example-basic": "spago --config examples/basic/spago.dhall bundle-app --main Example.Basic.Main --to examples/basic/dist/example.js"
+    "example-basic": "spago --config examples/basic/spago.dhall bundle-app --main Example.Basic.Main --to examples/basic/dist/example.js",
+    "example-components": "spago --config examples/components/spago.dhall bundle-app --main Example.Components.Main --to examples/components/dist/example.js"
   },
   "repository": {
     "type": "git",
