@@ -4,6 +4,7 @@ import Prelude
 
 import Control.Monad.State (modify_)
 import Effect (Effect)
+import MUI.Core.Button as MCB
 import React.Basic.DOM as R
 import React.Basic.Events (handler_)
 import React.Basic.Hooks (JSX)
@@ -41,17 +42,18 @@ render {state, send} =
   let
     label = if state.enabled then "On" else "Off"
   in
-    R.button
-      { title: "TITLE:" <> label
+    -- R.button
+    --   { title: label
+    --   , onClick: handler_ $ send Toggle
+    --   , children: [ R.text label ]
+    --   }
+    MCB.button
+      { title: label
+      , color: MCB.color.primary
+      , variant: MCB.variant.contained
       , onClick: handler_ $ send Toggle
       , children: [ R.text label ]
       }
-    -- MCB.button
-    --   { variant: MCB.variant.outlined
-    --   , title: "TITLE:" <> label
-    --   , onClick: mkEffectFn1 $ \_ -> Toggle
-    --   , children: [ R.text label ]
-    --   }
 
 handleAction :: forall props ctx m. Action -> H.HaloM props ctx State Action m Unit
 handleAction = case _ of
