@@ -2,7 +2,9 @@
 .psci_modules
 bower_components
 node_modules
-
 # Generated files
 .psci
+.psc-ide-port
 output
+.parcel-cache
+dist/
