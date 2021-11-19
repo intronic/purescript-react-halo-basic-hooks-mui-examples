@@ -12,3 +12,9 @@ npm run example-components
 ```
 
 This will bundle a runnable JS file, `example.js`, in the `examples/components/dist` directory. You can view the running application by opening the corresponding `index.html` file.
+
+## Query, Input, Output -> Props & Context
+
+`Halogen` `Query`, `Input` & `Output` are missing from `React.Halo` and can be replaced with `Props` & `Context`, where:
+* parent -> child messages can be replaced with Props & Context vars
+* child -> parent messages can be replaced with Context callbacks
