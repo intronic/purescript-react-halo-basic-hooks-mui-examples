@@ -23,7 +23,7 @@ npm install
 Now you can build any of the examples from the root of the repository using the command `npm run example-<name>`:
 
 ```text
-npm run example-ace
+# TODO: need to update for latest ace -- npm run example-ace
 npm run example-basic
 # ...
 ```
