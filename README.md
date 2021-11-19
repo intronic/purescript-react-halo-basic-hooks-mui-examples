@@ -54,6 +54,28 @@ The first option seems best for production builds, while the second option is go
 
 ### Bundling with `@preact` dependency
 
-### Fonts / assets
+It may be possible to use [Preact v10+](https://preactjs.com/guide/v10/getting-started#best-practices-powered-by-preact-cli) instead of React.
+The production `spago bundle-app` variant resulted in a **170K** vs **280K** file (`preact` version 60% of the size).
 
-To use assets locally (no CDN) they need to be included in the bundler, with possibly different strategies depending on option 1 or 2 above (see the `index.html` & `index-dev.html` files).
+Add aliases for `Parcel` to `package.json`:
+```json
+"alias": {
+    "react": "preact/compat",
+    "react-dom": "preact/compat",
+  },
+```
+Install `Preact`:
+```bash
+npm uninstall react react-dom
+npm run clean-all
+npm install
+npm install preact
+```
+
+Bundling & tree-shaking purescript with `spago bundle-app` and bundling/tree-shaking JS with `parcel build` resulted in ~**170K** JS file.
+Building purescript with `spago build` and bundling/tree-shaking JS with `parcel build` resulted in ~**660K** JS file.
+
+
+## Bundling Fonts / Assets
+
+To use assets locally (no CDN) they need to be included by the bundler, with possibly different strategies depending on option 1 or 2 above (see the `index.html` & `index-dev.html` files in `examples/basic/dist`).
