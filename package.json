@@ -2,14 +2,24 @@
   "name": "purescript-react-halo-examples",
   "version": "1.0.0",
   "description": "React Halo Examples from Halogen",
-  "main": "index.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "example-basic": "spago --config examples/basic/spago.dhall bundle-app --main Example.Basic.Main --to examples/basic/dist/example.js",
-    "example-components": "spago --config examples/components/spago.dhall bundle-app --main Example.Components.Main --to examples/components/dist/example.js"
+    "postinstall": "spago install",
+
+    "examples-basic": "spago --config examples/basic/spago.dhall bundle-app --main Example.Basic.Main --to examples/basic/dist/example.js ; parcel build --no-source-maps examples/basic/dist/index.html ; http-server dist/ -o",
+    "examples-basic-parcel": "spago --config examples/basic/spago.dhall build ; parcel build --no-source-maps examples/basic/dist/index-dev.html ; http-server dist/ -o",
+
+    "examples-basic-watch": "spago --config examples/basic/spago.dhall build --watch",
+    "examples-basic-serve": "parcel serve examples/basic/dist/index-dev.html",
+
+    "examples-components": "spago --config examples/components/spago.dhall bundle-app --main Example.Components.Main --to examples/components/dist/example.js",
+    "examples-components-build": "spago --config examples/components/spago.dhall build --watch",
+    "examples-components-serve": "parcel serve examples/components/index.html ",
+    "clean": "rm -rf dist/ output/",
+    "clean-all": "rm -rf dist/ output/ .spago/ .parcel-cache/ node_modules/"
   },
   "repository": {
     "type": "git",
@@ -17,8 +27,12 @@
   },
   "keywords": [
     "purescript",
+    "react-halo",
+    "react-basic-hooks",
+    "react-basic",
     "react",
-    "halo",
+    "mui",
+    "material-ui",
     "halogen"
   ],
   "author": "",
@@ -28,12 +42,14 @@
   },
   "homepage": "https://github.com/intronic/purescript-react-halo-examples#readme",
   "devDependencies": {
+    "parcel": "^2.0.1",
     "purescript": "^0.14.5",
     "spago": "^0.20.3"
   },
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
+    "@fontsource/roboto": "^4.5.1",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "react": "^17.0.2",

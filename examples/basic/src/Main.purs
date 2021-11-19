@@ -5,6 +5,7 @@ import Prelude
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import Effect.Class (liftEffect)
+import Effect.Console (log)
 import Effect.Exception as Exception
 import Example.Basic.Button as Button
 import React.Basic.DOM (render)
@@ -17,6 +18,7 @@ import Web.HTML.Window (document)
 
 main :: Effect Unit
 main = do
+  log "🍝 basic"
   container <- getElementById "demo" =<< (map toNonElementParentNode $ document =<< window)
   app <- Button.component
   case container of
