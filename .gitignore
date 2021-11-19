@@ -7,7 +7,7 @@ node_modules
 .psc-ide-port
 output
 .parcel-cache
-dist/
+/dist/
 
 # TODO: remove
 examples/ace/
