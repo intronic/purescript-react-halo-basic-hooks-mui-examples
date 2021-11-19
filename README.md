@@ -1,6 +1,6 @@
 # purescript-react-halo-basic-hooks-mui-examples
 
-Purescript React / Halo / Basic Hooks / MUI examples translated from .
+Purescript React / Halo / Basic Hooks / MUI examples translated from Halogen examples.
 
 See:
 
