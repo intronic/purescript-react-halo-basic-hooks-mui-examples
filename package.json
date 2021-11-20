@@ -11,9 +11,9 @@
     "examples-basic": "spago --config examples/basic/spago.dhall bundle-app --main Example.Basic.Main --to examples/basic/dist/example.js ; parcel build --no-source-maps examples/basic/dist/index.html ; http-server dist/ -o",
     "examples-basic-watch": "spago --config examples/basic/spago.dhall build --watch",
     "examples-basic-serve": "parcel serve examples/basic/dist/index.html",
-    "examples-components": "spago --config examples/components/spago.dhall bundle-app --main Example.Components.Main --to examples/components/dist/example.js",
-    "examples-components-build": "spago --config examples/components/spago.dhall build --watch",
-    "examples-components-serve": "parcel serve examples/components/index.html ",
+    "examples-components": "spago --config examples/components/spago.dhall bundle-app --main Example.Components.Main --to examples/components/dist/example.js ; parcel build --no-source-maps examples/components/dist/index.html ; http-server dist/ -o",
+    "examples-components-watch": "spago --config examples/components/spago.dhall build --watch",
+    "examples-components-serve": "parcel serve examples/components/dist/index.html",
     "clean": "rm -rf dist/ output/",
     "clean-all": "rm -rf dist/ output/ .spago/ .parcel-cache/ node_modules/"
   },
