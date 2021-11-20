@@ -1,6 +1,6 @@
 # purescript-react-halo-basic-hooks-mui-examples
 
-Purescript React / Halo / Basic Hooks / MUI examples translated from Halogen examples.
+Purescript React / Halo / Basic Hooks / MUI examples translated from Halogen examples. Or Preact.
 
 See:
 
@@ -12,7 +12,12 @@ See:
 
 ## Building & Running Examples
 
-Each of the `React Halo` examples are taken from `Halogen` and self-contained in a directory containing the source code and an `index.html` file that you can open in your browser once the source is compiled with `spago` and bundled (with `parceljs` or other, to fix JS FFI references to `require()` in particular in `React Basic` and `MUI` modules).
+Each of the `React Halo` examples are taken from `Halogen` and self-contained in a directory containing the source code, an `index.html` file, and run script in `package.json`.
+
+The `Halogen` project is pure PureScript so can be bundled with `spago` alone.
+
+The `purescript-react-basic` and `purescript-react-basic-mui` projects used here rely on foreign JS libs (React/Preact/MUI) so need an additional JS bundling step such as with `parceljs`.
+This JS bundling step will fix JS FFI `require()` references in `React Basic` and `MUI` modules.
 
 Make sure dependencies are installed:
 
@@ -20,15 +25,27 @@ Make sure dependencies are installed:
 npm install
 ```
 
-Now you can build any of the examples from the root of the repository using the command `npm run example-<name>`:
+Now you can build any of the examples from the root of the repository using the command `npm run examples-<name>`:
 
-```text
-# TODO: need to update for latest ace -- npm run example-ace
-npm run example-basic
+```sh
+# TODO: need to update for latest ace -- npm run examples-ace
+npm run examples-basic
 # ...
 ```
 
 This will compile the example source code into a file named `example.js` in the `dist` directory for the example. You can now open the corresponding `index.html` file from the same directory.
+
+### Development mode with HMR
+
+To build and run the scripts in development mode, run `spago` to build and watch `.purs` files in one terminal shell, and `parcel` to serve with hot-module-reloading in another:
+
+```sh
+npm run examples-basic-watch
+```
+
+```sh
+npm run examples-basic-serve
+```
 
 ## Halogen Examples
 
