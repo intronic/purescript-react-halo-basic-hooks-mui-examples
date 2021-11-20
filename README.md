@@ -46,7 +46,7 @@ spago --config examples/basic/spago.dhall bundle-app --main Example.Basic.Main -
 Building purescript with `spago build` and bundling/tree-shaking JS with `parcel build` resulted in ~**770K** JS file:
 
 ```bash
-spago --config examples/basic/spago.dhall build ; parcel build --no-source-maps examples/basic/dist/index-dev.html
+spago --config examples/basic/spago.dhall build ; parcel build --no-source-maps examples/basic/dist/index.html
 ```
 Note:
 
@@ -78,4 +78,4 @@ Building purescript with `spago build` and bundling/tree-shaking JS with `parcel
 
 ## Bundling Fonts / Assets
 
-To use assets locally (no CDN) they need to be included by the bundler, with possibly different strategies depending on option 1 or 2 above (see the `index.html` & `index-dev.html` files in `examples/basic/dist`).
+To include assets like fonts locally (not via 3rd party CDN) they need to be included by the bundler (see the `index.html` files in `examples/basic/dist`).
