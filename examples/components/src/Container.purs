@@ -4,14 +4,17 @@ import Prelude
 
 import Control.Monad.State (modify_)
 import Data.Maybe (Maybe(..), maybe)
+import Debug as D
 import Effect (Effect)
 import Example.Components.Button as Button
+import MUI.Core.Button as MCB
 import React.Basic.DOM as R
 import React.Basic.Events (handler_)
 import React.Basic.Hooks (JSX)
 import React.Halo (HaloM, Lifecycle)
 import React.Halo as H
 import Type.Proxy (Proxy(..))
+import Debug as D
 
 data Action
   = HandleButton Button.Message
@@ -59,10 +62,12 @@ component = do
                 $ "Last time I checked, the button was: "
                     <> (maybe "(not checked yet)" (if _ then "on" else "off") state.buttonState)
                     <> ". "
-            , R.button
-                { onClick: handler_ $ send CheckButtonState
-                , children: [ R.text "Check now" ]
-                }
+            , MCB.button
+              { color: MCB.color.primary
+              , variant: MCB.variant.outlined
+              , onClick: handler_ $ send CheckButtonState
+              , children: [ R.text "Check now" ]
+              }
             ]
         ]
 
@@ -89,8 +94,11 @@ component = do
   handleAction :: forall props ctx m. Action -> H.HaloM props ctx State Action m Unit
   handleAction = case _ of
     HandleButton (Button.Toggled _) -> do
+      D.traceM "handle HandleButton"
       modify_ (\st -> st { toggleCount = st.toggleCount + 1 })
     CheckButtonState -> do
+      D.traceM "handle CheckButtonState"
+
       -- buttonState <- request _button unit Button.IsOn -- TODO: convert request to Context
       -- modify_ (_ { buttonState = buttonState })
       pure unit

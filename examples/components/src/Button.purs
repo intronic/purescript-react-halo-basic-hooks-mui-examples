@@ -3,8 +3,9 @@ module Example.Components.Button (Query(..), Message(..), component) where
 
 import Prelude
 
-import Control.Monad.State (modify)
+import Control.Monad.State (modify, get)
 import Data.Maybe (Maybe(..))
+import Debug as D
 import Effect (Effect)
 import MUI.Core.Button as MCB
 import React.Basic.DOM as R
@@ -43,6 +44,7 @@ eval =
   H.mkEval
     _
       { onAction = handleAction
+      , onUpdate = handleUpdate -- when props or context change we might need to raise an Action
       -- , handleQuery = handleQuery
       }
 
@@ -74,9 +76,17 @@ render {state, send} =
 handleAction :: forall props ctx m. Action -> H.HaloM props ctx State Action m Unit
 handleAction = case _ of
   Toggle -> do
+    {enabled} <- get
     newState <- modify \st -> st { enabled = not st.enabled }
+    D.traceM $ "Button Action: Toggle " <> show enabled <> " -> " <> show newState.enabled
     pure unit -- TODO: set context
     -- H.raise (Toggled newState.enabled)
+
+
+handleUpdate :: forall props ctx. { props :: props, context :: ctx } -> { props :: props, context :: ctx } -> Maybe Action
+handleUpdate old new = do
+  D.traceM $ "Button Update"
+  Nothing -- :: Maybe Action
 
 -- TODO: get context
 -- handleQuery :: forall m a. Query a -> H.HalogenM State Action () Message m (Maybe a)
