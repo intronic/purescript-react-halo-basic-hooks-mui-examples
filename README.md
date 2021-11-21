@@ -1,6 +1,6 @@
 # purescript-react-halo-basic-hooks-mui-examples
 
-Purescript React / Halo / Basic Hooks / MUI examples translated from Halogen examples. Or Preact.
+Purescript React / Preact / Halo / Basic Hooks / MUI examples translated from Halogen examples.
 
 See:
 
@@ -66,6 +66,8 @@ Building purescript with `spago build` and bundling/tree-shaking JS with `parcel
 spago --config examples/basic/spago.dhall build ; parcel build --no-source-maps examples/basic/dist/index.html
 ```
 Note:
+
+I haven't looked into the differences but presume `spago` can do more PureScript tree-shaking, and Preact also does reduce sizes compared to React.
 
 The first option seems best for production builds, while the second option is good for dev mode (using a combination of `spago build --watch` and `parcel serve` for hot module reloading).
 
